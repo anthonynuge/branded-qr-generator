@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600"],
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={ibmPlexMono.className}>
         {children}
+        <Footer />
       </body>
     </html>
   );

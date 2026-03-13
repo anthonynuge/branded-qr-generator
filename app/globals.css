@@ -28,6 +28,7 @@
   --text-muted: hsl(var(--fg-muted));
   --accent-resolved: hsl(var(--accent));
   --border-color: hsl(var(--border));
+  --footer-h: 2.5rem;
 }
 
 @layer base {
@@ -39,6 +40,9 @@
 }
 
 @layer components {
+  .inner {
+    @apply mx-auto w-full max-w-5xl px-6;
+  }
   .input {
     @apply w-full rounded px-3 py-2 text-sm outline-none transition-colors;
     background-color: var(--bg-primary);
