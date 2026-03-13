@@ -12,7 +12,6 @@ interface Props {
 export function ColorPalette({ palette, finderColor, onFinderColorChange }: Props) {
   return (
     <div className="space-y-2">
-      <label className="block text-sm font-medium text-gray-700">Finder Color</label>
       <div className="flex flex-wrap items-center gap-2">
         {palette && (
           <>
@@ -23,7 +22,7 @@ export function ColorPalette({ palette, finderColor, onFinderColorChange }: Prop
               className="h-8 w-8 rounded-full border-2 transition-transform hover:scale-110 focus:outline-none"
               style={{
                 backgroundColor: rgbToHex(...palette.dominant),
-                borderColor: finderColor === rgbToHex(...palette.dominant) ? '#6366f1' : 'transparent',
+                borderColor: finderColor === rgbToHex(...palette.dominant) ? 'var(--text-primary)' : 'transparent',
               }}
             />
             {palette.palette.map((color, i) => {
@@ -37,7 +36,7 @@ export function ColorPalette({ palette, finderColor, onFinderColorChange }: Prop
                   className="h-7 w-7 rounded-full border-2 transition-transform hover:scale-110 focus:outline-none"
                   style={{
                     backgroundColor: hex,
-                    borderColor: finderColor === hex ? '#6366f1' : 'transparent',
+                    borderColor: finderColor === hex ? 'var(--text-primary)' : 'transparent',
                   }}
                 />
               );
@@ -45,9 +44,9 @@ export function ColorPalette({ palette, finderColor, onFinderColorChange }: Prop
           </>
         )}
         {/* Manual color picker */}
-        <label className="relative h-8 w-8 cursor-pointer overflow-hidden rounded-full border-2 border-dashed border-gray-300 hover:border-indigo-400">
+        <label className="relative h-8 w-8 cursor-pointer overflow-hidden rounded-full border hover:border-(--text-muted)" style={{ borderColor: 'var(--border-color)' }}>
           <span className="sr-only">Custom color</span>
-          <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-xs">+</div>
+          <div className="absolute inset-0 flex items-center justify-center text-xs text-(--text-muted)">+</div>
           <input
             type="color"
             value={finderColor}
@@ -57,8 +56,8 @@ export function ColorPalette({ palette, finderColor, onFinderColorChange }: Prop
         </label>
         {/* Current color swatch */}
         <div
-          className="h-8 w-8 rounded-full border border-gray-200"
-          style={{ backgroundColor: finderColor }}
+          className="h-8 w-8 rounded-full border"
+          style={{ backgroundColor: finderColor, borderColor: 'var(--border-color)' }}
           title={finderColor}
         />
       </div>

@@ -19,12 +19,18 @@ export function QROptions({ options, onChange }: Props) {
   }
 
   return (
-    <div className="space-y-4">
-      {/* Module size */}
-      <div className="space-y-1">
-        <div className="flex justify-between">
-          <label className="text-sm font-medium text-gray-700">Module Size</label>
-          <span className="text-sm text-gray-500">{options.moduleSize}px</span>
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <div className="flex items-center justify-between gap-4">
+          <label className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Module size</label>
+          <input
+            type="number"
+            min={6}
+            max={20}
+            value={options.moduleSize}
+            onChange={(e) => update({ moduleSize: Number(e.target.value) })}
+            className="input w-14 text-right text-sm py-1.5"
+          />
         </div>
         <input
           type="range"
@@ -32,15 +38,21 @@ export function QROptions({ options, onChange }: Props) {
           max={20}
           value={options.moduleSize}
           onChange={(e) => update({ moduleSize: Number(e.target.value) })}
-          className="w-full accent-indigo-600"
+          className="w-full h-1"
         />
       </div>
 
-      {/* Dot scale */}
-      <div className="space-y-1">
-        <div className="flex justify-between">
-          <label className="text-sm font-medium text-gray-700">Dot Size</label>
-          <span className="text-sm text-gray-500">{Math.round(options.dotScale * 100)}%</span>
+      <div className="space-y-2">
+        <div className="flex items-center justify-between gap-4">
+          <label className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Dot size</label>
+          <input
+            type="number"
+            min={40}
+            max={100}
+            value={Math.round(options.dotScale * 100)}
+            onChange={(e) => update({ dotScale: Number(e.target.value) / 100 })}
+            className="input w-14 text-right text-sm py-1.5"
+          />
         </div>
         <input
           type="range"
@@ -48,25 +60,25 @@ export function QROptions({ options, onChange }: Props) {
           max={100}
           value={Math.round(options.dotScale * 100)}
           onChange={(e) => update({ dotScale: Number(e.target.value) / 100 })}
-          className="w-full accent-indigo-600"
+          className="w-full h-1"
         />
-        <p className="text-xs text-gray-400">Smaller dots reveal more of the logo between them</p>
+        <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Smaller dots reveal more of the logo</p>
       </div>
 
-      {/* Dot style */}
-      <div className="space-y-1">
-        <label className="block text-sm font-medium text-gray-700">Dot Style</label>
+      <div className="space-y-2">
+        <label className="block text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Dot style</label>
         <div className="flex gap-2">
           {DOT_STYLES.map((s) => (
             <button
               key={s.value}
               type="button"
               onClick={() => update({ dotStyle: s.value })}
-              className={`flex-1 rounded-lg border py-2 text-sm font-medium transition-colors ${
-                options.dotStyle === s.value
-                  ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                  : 'border-gray-200 text-gray-600 hover:border-indigo-300'
-              }`}
+              className="flex-1 rounded border py-2 text-sm font-medium transition-colors"
+              style={{
+                borderColor: options.dotStyle === s.value ? 'var(--text-primary)' : 'var(--border-color)',
+                color: options.dotStyle === s.value ? 'var(--text-primary)' : 'var(--text-muted)',
+                backgroundColor: 'transparent',
+              }}
             >
               {s.label}
             </button>
@@ -74,21 +86,21 @@ export function QROptions({ options, onChange }: Props) {
         </div>
       </div>
 
-      {/* Background color */}
-      <div className="space-y-1">
-        <label className="block text-sm font-medium text-gray-700">Background</label>
+      <div className="space-y-2">
+        <label className="block text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Background</label>
         <div className="flex items-center gap-3">
           <input
             type="color"
             value={options.bgColor}
             onChange={(e) => update({ bgColor: e.target.value })}
-            className="h-9 w-14 cursor-pointer rounded border border-gray-200 p-0.5"
+            className="h-8 w-12 cursor-pointer rounded border p-0.5"
+            style={{ borderColor: 'var(--border-color)' }}
           />
           <input
             type="text"
             value={options.bgColor}
             onChange={(e) => update({ bgColor: e.target.value })}
-            className="input w-28 font-mono text-sm"
+            className="input w-24 font-mono text-sm py-1.5"
             maxLength={7}
             placeholder="#ffffff"
           />

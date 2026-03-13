@@ -40,19 +40,18 @@ export function QRContentForm({ content, onChange }: Props) {
 
   return (
     <div className="space-y-3">
-      <label className="block text-sm font-medium text-gray-700">QR Content</label>
-      {/* Tabs */}
-      <div className="flex gap-1 rounded-lg bg-gray-100 p-1">
+      <div className="flex gap-0 border-b" style={{ borderColor: 'var(--border-color)' }}>
         {TABS.map((tab) => (
           <button
             key={tab.id}
             type="button"
             onClick={() => setMode(tab.id)}
-            className={`flex-1 rounded-md py-1.5 text-sm font-medium transition-colors ${
+            className="px-4 py-2 text-sm font-medium transition-colors border-b-2 -mb-px"
+            style={
               mode === tab.id
-                ? 'bg-white text-indigo-700 shadow-sm'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
+                ? { color: 'var(--text-primary)', borderColor: 'var(--text-primary)' }
+                : { color: 'var(--text-muted)', borderColor: 'transparent' }
+            }
           >
             {tab.label}
           </button>
