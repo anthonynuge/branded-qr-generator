@@ -8,6 +8,7 @@ import { useQRMatrix } from '@/hooks/useQRMatrix';
 import { useQRRenderer } from '@/hooks/useQRRenderer';
 import { rgbToHex } from '@/lib/color/colorUtils';
 
+import Logo from '@/components/Logo';
 import { UploadLogo } from '@/components/UploadLogo';
 import { QRContentForm } from '@/components/QRContentForm';
 import { ColorPalette } from '@/components/ColorPalette';
@@ -54,11 +55,11 @@ export default function Home() {
   const hasContent = matrix !== null;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
+    <div className="min-h-screen pb-(--footer-h)" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <header className="border-b px-6 py-5" style={{ borderColor: 'var(--border-color)' }}>
-        <div className="mx-auto max-w-5xl">
-          <h1 className="text-xl font-semibold tracking-tight" style={{ color: 'var(--text-primary)' }}>Branded QR</h1>
-          <p className="mt-0.5 text-sm" style={{ color: 'var(--text-muted)' }}>QR codes blended with your brand logo</p>
+        <div className="mx-auto max-w-5xl flex gap-8 items-center">
+          <Logo />
+          <p className="mt-2 text-sm" style={{ color: 'var(--text-muted)' }}>QR codes blended with your brand logo</p>
         </div>
       </header>
 
