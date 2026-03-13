@@ -1,26 +1,58 @@
 @import "tailwindcss";
 
+/* Light (unused in app) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: 0 0% 87%;
+  --fg: 0 0% 25%;
+  --accent: 82 100% 89%;
+  --fg-muted: 0 0% 40%;
+  --border: 0 0% 70%;
+  --accent-soft: 82 100% 94%;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Minimal dark theme */
+:root.dark {
+  --bg: 0 0% 4%;
+  --fg: 0 0% 96%;
+  --accent: 0 0% 100%;
+
+  --fg-muted: 0 0% 55%;
+  --fg-subtle: 0 0% 45%;
+
+  --border: 0 0% 18%;
+  --accent-soft: 0 0% 12%;
+
+  --bg-primary: hsl(var(--bg));
+  --bg-secondary: hsl(var(--accent-soft));
+  --text-primary: hsl(var(--fg));
+  --text-muted: hsl(var(--fg-muted));
+  --accent-resolved: hsl(var(--accent));
+  --border-color: hsl(var(--border));
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply antialiased;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .input {
+    @apply w-full rounded px-3 py-2 text-sm outline-none transition-colors;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+  .input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.8;
+  }
+  .input:focus {
+    border-color: var(--text-muted);
+  }
+  input[type="range"] {
+    accent-color: var(--text-primary);
+  }
 }
