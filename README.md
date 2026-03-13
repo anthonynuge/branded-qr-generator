@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Branded QR Code Generator
 
-## Getting Started
+A browser-based tool that generates scannable QR codes with your logo embedded as the background — keeping your brand visually dominant while remaining fully readable by any QR scanner.
 
-First, run the development server:
+## What it does
+
+Upload a logo, enter a URL or text, and the app produces a QR code where your logo shows through the pattern. The QR dots are only drawn where the logo's brightness would confuse a scanner — everywhere else, the logo itself provides the correct light/dark value. The result looks like a branded image but scans reliably.
+
+**Key features:**
+- Upload any logo (PNG, JPG, SVG, etc.)
+- Auto-extracts your brand's dominant color and applies it to the QR finder squares
+- Customize dot style (square, rounded, circle), dot size, and colors
+- Export as PNG or SVG
+- Everything runs in the browser — no files are sent to a server
+
+## How it works
+
+1. Your logo is drawn as the full canvas background
+2. The app checks the brightness of each QR module position against the logo pixels at that location
+3. A dot is only drawn if the logo's brightness doesn't already match what the QR code needs (dark vs. light)
+4. The three finder squares (corner markers) and alignment patterns are always drawn on top in your brand color
+5. Error correction level H (30% tolerance) handles any modules left uncovered by the logo
+
+This means the logo stays visually dominant — dots only appear where necessary for scannability.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Other commands
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # Production build + TypeScript check
+npm run lint    # ESLint
+```
 
-## Learn More
+## Tech stack
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 14 (App Router, client-side only)
+- TypeScript
+- Tailwind CSS
+- `qrcode` — QR matrix generation
+- `color-thief-browser` — dominant color extraction from logo
