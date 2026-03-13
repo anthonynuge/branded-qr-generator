@@ -10,23 +10,25 @@ interface Props {
 
 export function QRPreview({ canvasRef, hasMatrix, error }: Props) {
   return (
-    <div className="flex aspect-square w-full max-w-sm items-center justify-center rounded-2xl border border-gray-200 bg-gray-50">
+    <div className="flex aspect-square w-full max-w-sm items-center justify-center rounded-lg border" style={{ borderColor: 'var(--border-color)', backgroundColor: 'var(--bg-primary)' }}>
       {error ? (
         <div className="p-6 text-center">
-          <p className="text-sm font-medium text-red-600">Error generating QR</p>
-          <p className="mt-1 text-xs text-gray-500">{error}</p>
+          <p className="text-sm font-medium text-red-400">Error generating QR</p>
+          <p className="mt-1 text-xs text-[var(--text-muted)]">{error}</p>
         </div>
       ) : !hasMatrix ? (
         <div className="p-6 text-center">
-          <div className="mx-auto mb-3 h-16 w-16 rounded-xl border-2 border-dashed border-gray-300" />
-          <p className="text-sm text-gray-400">Enter content to generate QR code</p>
+          <div className="mx-auto mb-3 h-16 w-16 rounded-lg border-2 border-dashed" style={{ borderColor: 'var(--border-color)' }} />
+          <p className="text-sm text-[var(--text-muted)]">Enter content to generate QR code</p>
         </div>
       ) : (
-        <canvas
-          ref={canvasRef}
-          className="max-h-full max-w-full rounded-xl"
-          style={{ imageRendering: 'pixelated' }}
-        />
+        <div style={{ backgroundColor: '#ffffff', padding: '16px', borderRadius: '8px', lineHeight: 0 }}>
+          <canvas
+            ref={canvasRef}
+            className="max-h-full max-w-full block"
+            style={{ imageRendering: 'pixelated' }}
+          />
+        </div>
       )}
     </div>
   );
