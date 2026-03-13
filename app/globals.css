@@ -12,9 +12,10 @@
 
 /* Minimal dark theme */
 :root.dark {
-  --bg: 0 0% 4%;
-  --fg: 0 0% 96%;
-  --accent: 0 0% 100%;
+  --bg: 0 0% 6%;
+  --fg: 45 3% 46%;
+
+  --accent: 50 15% 76%;
 
   --fg-muted: 0 0% 55%;
   --fg-subtle: 0 0% 45%;
