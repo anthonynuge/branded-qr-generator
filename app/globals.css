@@ -1,62 +1,82 @@
 @import "tailwindcss";
 
-/* Light (unused in app) */
+@theme {
+  --color-accent: var(--accent-resolved);
+}
+
+/* -----------------------------------------------------------------------------
+   Design tokens (raw HSL components). .dark overrides for dark theme.
+   -------------------------------------------------------------------------- */
 :root {
   --bg: 0 0% 87%;
   --fg: 0 0% 25%;
-  --accent: 82 100% 89%;
   --fg-muted: 0 0% 40%;
   --border: 0 0% 70%;
+  --accent: 82 100% 89%;
   --accent-soft: 82 100% 94%;
+  --footer-h: 2.5rem;
 }
 
-/* Minimal dark theme */
 :root.dark {
   --bg: 0 0% 6%;
   --fg: 45 3% 46%;
-
-  --accent: 50 15% 76%;
-
   --fg-muted: 0 0% 55%;
   --fg-subtle: 0 0% 45%;
-
   --border: 0 0% 18%;
+  --accent: 50 15% 76%;
   --accent-soft: 0 0% 12%;
+}
 
+/* Resolved colors (single source, uses raw tokens above) */
+:root {
   --bg-primary: hsl(var(--bg));
   --bg-secondary: hsl(var(--accent-soft));
   --text-primary: hsl(var(--fg));
   --text-muted: hsl(var(--fg-muted));
+  --text-accent: hsl(var(--accent));
   --accent-resolved: hsl(var(--accent));
   --border-color: hsl(var(--border));
-  --footer-h: 2.5rem;
 }
 
+/* -----------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
 @layer base {
   body {
     @apply antialiased;
     background-color: var(--bg-primary);
     color: var(--text-primary);
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-accent;
+  }
 }
 
+/* -----------------------------------------------------------------------------
+   Components
+   -------------------------------------------------------------------------- */
 @layer components {
   .inner {
     @apply mx-auto w-full max-w-5xl px-6;
   }
+
   .input {
     @apply w-full rounded px-3 py-2 text-sm outline-none transition-colors;
     background-color: var(--bg-primary);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
   }
+
   .input::placeholder {
     color: var(--text-muted);
     opacity: 0.8;
   }
+
   .input:focus {
     border-color: var(--text-muted);
   }
+
   input[type="range"] {
     accent-color: var(--text-primary);
   }
