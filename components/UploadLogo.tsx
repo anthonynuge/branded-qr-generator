@@ -21,9 +21,9 @@ export function UploadLogo({ onFileChange, objectUrl }: Props) {
   return (
     <div className="space-y-2">
       <div
-        className={`relative flex flex-col items-center justify-center rounded border border-dashed p-8 transition-colors cursor-pointer ${
-          dragging ? 'border-[var(--text-muted)] opacity-80' : 'border-[var(--border-color)] hover:border-[var(--text-muted)]'
-        }`}
+        className={`relative flex flex-col items-center justify-center rounded border border-dashed p-8 transition-colors cursor-pointer 
+          ${dragging ? 'border-(--text-muted) opacity-80' : 'border-(--border-color) hover:border-(--text-muted)'
+          }`}
         style={{ backgroundColor: 'var(--bg-primary)' }}
         onClick={() => inputRef.current?.click()}
         onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
