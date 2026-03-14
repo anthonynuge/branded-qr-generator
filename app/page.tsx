@@ -68,20 +68,20 @@ export default function Home() {
           {/* Left column — controls, no cards */}
           <div className="space-y-14">
             <section>
-              <h2 className="mb-3 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Upload logo</h2>
+              <h2 className="mb-3 text-sm font-semibold">Upload logo</h2>
               <p className="mb-4 text-xs" style={{ color: 'var(--text-muted)' }}>PNG, JPG, SVG or WebP. Becomes the QR background.</p>
               <UploadLogo onFileChange={setLogoFile} objectUrl={objectUrl} />
               {logoError && <p className="mt-2 text-xs text-red-400">{logoError}</p>}
             </section>
 
             <section>
-              <h2 className="mb-3 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>QR content</h2>
+              <h2 className="mb-3 text-sm font-semibold">QR content</h2>
               <p className="mb-4 text-xs" style={{ color: 'var(--text-muted)' }}>URL, text, or vCard to encode.</p>
               <QRContentForm content={content} onChange={setContent} />
             </section>
 
             <section>
-              <h2 className="mb-3 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Colors</h2>
+              <h2 className="mb-3 text-sm font-semibold">Colors</h2>
               <p className="mb-4 text-xs" style={{ color: 'var(--text-muted)' }}>Finder pattern color from palette or custom.</p>
               <ColorPalette
                 palette={palette}
@@ -91,7 +91,7 @@ export default function Home() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Style</h2>
+              <h2 className="mb-3 text-sm font-semibold">Style</h2>
               <p className="mb-4 text-xs" style={{ color: 'var(--text-muted)' }}>Module size, dot shape and background.</p>
               <QROptions options={options} onChange={setOptions} />
             </section>
@@ -100,7 +100,7 @@ export default function Home() {
           {/* Right column — preview first (unchanged from original for reliable scanning), then actions */}
           <div className="flex flex-col gap-6 lg:sticky lg:top-8 lg:self-start">
             <section>
-              <h2 className="mb-4 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Preview</h2>
+              <h2 className="mb-4 text-sm font-semibold">Preview</h2>
               <div className="flex justify-center">
                 <QRPreview canvasRef={canvasRef} hasMatrix={hasContent} error={qrError} />
               </div>
