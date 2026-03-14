@@ -85,4 +85,39 @@
   input[type="range"] {
     accent-color: var(--text-primary);
   }
+
+  .btn {
+    @apply transition-colors transition-opacity;
+  }
+
+  .btn:hover:not(:disabled) {
+    background-color: var(--accent-resolved);
+    color: var(--bg-primary);
+  }
+
+  .btn-primary,
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--accent-resolved);
+    color: var(--bg-primary);
+    border-color: var(--accent-resolved);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    border-color: var(--border-color);
+    color: var(--text-muted);
+  }
+
+  .btn-active {
+    background-color: var(--accent-resolved);
+    color: var(--bg-primary);
+    border-color: var(--accent-resolved);
+  }
+
+  .btn-active:hover:not(:disabled) {
+    background-color: var(--accent-resolved);
+    color: var(--bg-primary);
+    border-color: var(--accent-resolved);
+    opacity: 0.2;
+  }
 }
