@@ -95,11 +95,17 @@
     color: var(--bg-primary);
   }
 
-  .btn-primary,
+  .btn-primary {
+    background-color: var(--accent-resolved);
+    color: var(--bg-primary);
+    border-color: var(--accent-resolved);
+  }
+
   .btn-primary:hover:not(:disabled) {
     background-color: var(--accent-resolved);
     color: var(--bg-primary);
     border-color: var(--accent-resolved);
+    opacity: 0.85;
   }
 
   .btn-secondary {
@@ -118,6 +124,6 @@
     background-color: var(--accent-resolved);
     color: var(--bg-primary);
     border-color: var(--accent-resolved);
-    opacity: 0.2;
+    opacity: 0.85;
   }
 }
