@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/Button';
 import type { QRRenderOptions, DotStyle } from '@/types';
 
 interface Props {
@@ -69,19 +70,15 @@ export function QROptions({ options, onChange }: Props) {
         <label className="block text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Dot style</label>
         <div className="flex gap-2">
           {DOT_STYLES.map((s) => (
-            <button
+            <Button
               key={s.value}
-              type="button"
+              variant="secondary"
+              active={options.dotStyle === s.value}
               onClick={() => update({ dotStyle: s.value })}
-              className="flex-1 rounded border py-2 text-sm font-medium transition-colors"
-              style={{
-                borderColor: options.dotStyle === s.value ? 'var(--text-primary)' : 'var(--border-color)',
-                color: options.dotStyle === s.value ? 'var(--text-primary)' : 'var(--text-muted)',
-                backgroundColor: 'transparent',
-              }}
+              className="flex-1 py-2"
             >
               {s.label}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
