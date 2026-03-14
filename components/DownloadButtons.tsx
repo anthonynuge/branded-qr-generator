@@ -10,7 +10,7 @@ interface Props {
 
 export function DownloadButtons({ onDownloadPNG, onDownloadSVG, disabled }: Props) {
   return (
-    <div className="flex items-center gap-3 w-full max-w-sm">
+    <div className="mx-auto flex w-full max-w-sm items-center gap-3">
       <Button
         variant="primary"
         onClick={onDownloadPNG}
