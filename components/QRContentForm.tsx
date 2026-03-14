@@ -49,7 +49,7 @@ export function QRContentForm({ content, onChange }: Props) {
             className="px-4 py-2 text-sm font-medium transition-colors border-b-2 -mb-px"
             style={
               mode === tab.id
-                ? { color: 'var(--text-primary)', borderColor: 'var(--text-primary)' }
+                ? { color: 'var(--text-accent)', borderColor: 'var(--text-accent)' }
                 : { color: 'var(--text-muted)', borderColor: 'transparent' }
             }
           >
